@@ -2,6 +2,27 @@ Yet Another Kafka log Handler
 
 This project is currently in BETA and not finished!
 
+## Using the Handler
+
+#### Without authentication
+
+```
+KAFKA_BROKERS = 'localhost:9092'
+KAFKA_TOPIC = 'log_test'
+log.addHandler(yakh.KafkaHandler(KAFKA_BROKERS, KAFKA_TOPIC))
+```
+
+
+#### With authentication (PLAIN)
+
+```
+KAFKA_BROKERS = 'localhost:9092'
+KAFKA_TOPIC = 'log_test'
+USERNAME = 'batman'
+PASSWORD = 'robin_is_lame'
+log.addHandler(yakh.KafkaHandler(KAFKA_BROKERS, KAFKA_TOPIC, username=USERNAME, password=PASSWORD))
+```
+
 ## Building a new pip package
 
 First we will build the next version for pypi test and if that works without problems, then it will be built for pypi production
