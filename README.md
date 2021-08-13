@@ -7,6 +7,8 @@ This project is currently in BETA and not finished!
 #### Without authentication
 
 ```
+import yakh
+
 KAFKA_BROKERS = 'localhost:9092'
 KAFKA_TOPIC = 'log_test'
 log.addHandler(yakh.KafkaHandler(KAFKA_BROKERS, KAFKA_TOPIC))
@@ -16,6 +18,8 @@ log.addHandler(yakh.KafkaHandler(KAFKA_BROKERS, KAFKA_TOPIC))
 #### With authentication (PLAIN)
 
 ```
+import yakh
+
 KAFKA_BROKERS = 'localhost:9092'
 KAFKA_TOPIC = 'log_test'
 USERNAME = 'batman'
