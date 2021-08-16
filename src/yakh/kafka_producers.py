@@ -122,6 +122,8 @@ class AbstractKafkaProducer(ABC):
     def callback_handler(self, err: confluent_kafka.KafkaError, msg: confluent_kafka.Message):
         if err is not None:
             self.add_to_buffer(msg)
+        elif self.buffer.qsize() > 0:
+            self.send_buffered_messages()
 
     def add_to_buffer(self, message: confluent_kafka.Message):
         try:

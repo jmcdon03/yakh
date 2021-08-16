@@ -63,8 +63,6 @@ class KafkaHandler(logging.Handler):
         self.producer = producer_type(self.brokers)
 
     def emit(self, record: logging.LogRecord):
-        self.producer.send_buffered_messages()
-
         message = self._create_json_record(record)
         self.producer.send(self.topic, json.dumps(message))
 
@@ -97,9 +95,10 @@ class KafkaHandler(logging.Handler):
         return json_record
 
     def flush(self):
-        self.producer.send_buffered_messages()
         self.producer.flush()
 
     def close(self):
+        if self.producer.buffer.qsize() > 0:
+            self.producer.send_buffered_messages()
         self.flush()
         super().close()
