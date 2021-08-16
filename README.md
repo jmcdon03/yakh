@@ -51,4 +51,13 @@ $ python3 -m twine upload --skip-existing dist/*
 ```
 
 
+## TODO
+
+* If the docker container is shutting down and the buffer has data that cannot be sent to Kafka, write the JSON to a mounted drive that provides persistence.
+* import a CA
+* certificate authentication
+* kerberos authentication
+* ability to pass in a configuration dictionary
+
+
 
