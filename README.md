@@ -58,6 +58,7 @@ $ python3 -m twine upload --skip-existing dist/*
 * certificate authentication
 * kerberos authentication
 * ability to pass in a configuration dictionary
+* multiprocessing.Queue option
 
 
 
